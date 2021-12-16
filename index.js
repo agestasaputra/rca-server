@@ -20,6 +20,11 @@ app.get('/', (req, res) => {
 io.on('connection', (socket) => {
   console.log(`user ${socket.id} is connected!`);
 
+  socket.on('messageRemove', data => {
+    console.log('messageRemove - data:', data);
+    socket.broadcast.emit('message:chat-remove', data)
+  })
+
   socket.on('message', data => {
     socket.broadcast.emit('message:chat', data)
   })
