@@ -32,6 +32,7 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('message:stopTyping', data)
   })
 
+  // disconnect socket when user is close the browser or tab
   socket.on('disconnect', () => {
     console.log(`user ${socket.id} has left!`)
   })
